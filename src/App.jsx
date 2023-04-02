@@ -35,7 +35,7 @@ function App() {
                                     {message?.deleted_date}
                                 </p>
                             </div>
-                            <p className="font-normal text-gray-700 dark:text-gray-400">
+                            <p className="font-normal text-gray-700 dark:text-gray-400 flex overflow-hidden">
                                 {message?.text}
                                 {message?.message_state &&
                                     "message deleted by creator"}
