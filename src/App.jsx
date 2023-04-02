@@ -19,7 +19,7 @@ function App() {
                         >
                             <div className="flex">
                                 <h5 className="text-md mr-2 font-semibold tracking-tight text-gray-900 dark:text-white">
-                                    {message.creator?.name}
+                                    <span className={message.creator?.email === "sbhadra@torontomu.ca" ? "text-red-500" : {}}>{message.creator?.name}</span>
                                 </h5>
                                 <p className="mt-[3px] text-sm font-light text-gray-500 dark:text-gray-400">
                                     {message?.created_date}
