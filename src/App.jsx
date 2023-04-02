@@ -50,7 +50,7 @@ function App() {
                 })}
             </div>
             <a href="https://codebeautify.org/jsonviewer/y2318ef9e" target="_blank">
-                <Icon className="mx-auto mb-2" icon="material-symbols:frame-source" width={25} />
+                <Icon className="mx-auto pb-2" icon="material-symbols:frame-source" width={25} />
             </a>
         </div>
     );
