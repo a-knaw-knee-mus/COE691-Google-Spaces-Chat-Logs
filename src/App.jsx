@@ -40,10 +40,10 @@ function App() {
                                 {message?.message_state &&
                                     "message deleted by creator"}
                             </p>
-                            <div className="mt-1 flex gap-2">
+                            <div className="mt-1 flex flex-wrap gap-2">
                                 {message.reactions?.map((reaction, index) => {
                                     return (
-                                        <div className="group">
+                                        <div className="max-w-auto group">
                                             <div
                                                 key={index}
                                                 className="inline-flex items-center py-1 px-2 text-s text-center text-white bg-gray-300 rounded-lg focus:ring-4 focus:outline-none  dark:bg-slate-600 dark:focus:ring-slate-800"
@@ -57,13 +57,18 @@ function App() {
                                                 </span>
                                             </div>
                                             <div className="absolute opacity-0 group-hover:opacity-100 transition-all bg-slate-600 rounded-md p-2 mt-2">
-                                                {reaction.reactor_emails.map((email, index) => {
-                                                    return (
-                                                        <p key={index} className="text-xs text-white">
-                                                            {email}
-                                                        </p>
-                                                    );
-                                                })}
+                                                {reaction.reactor_emails.map(
+                                                    (email, index) => {
+                                                        return (
+                                                            <p
+                                                                key={index}
+                                                                className="text-xs text-white"
+                                                            >
+                                                                {email}
+                                                            </p>
+                                                        );
+                                                    }
+                                                )}
                                             </div>
                                         </div>
                                     );
