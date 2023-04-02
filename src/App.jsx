@@ -56,7 +56,7 @@ function App() {
                                                     }
                                                 </span>
                                             </div>
-                                            <div className="absolute sm:opacity-0 group-hover:opacity-100 transition-all bg-slate-600 rounded-md p-2 mt-2">
+                                            <div className="absolute opacity-0 group-hover:opacity-100 transition-all bg-slate-600 rounded-md p-2 mt-2">
                                                 {reaction.reactor_emails.map((email, index) => {
                                                     return (
                                                         <p key={index} className="text-xs text-white">
