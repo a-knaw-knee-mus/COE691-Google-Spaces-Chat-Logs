@@ -6,11 +6,11 @@ function App() {
     const messages = data.messages;
 
     return (
-        <div className="App">
-            <h1 className="font-bold text-center text-3xl mt-4">
+        <div className="dark:bg-[#0f172a] dark:text-white">
+            <h1 className="font-bold text-center text-3xl pt-4">
                 COE691 W2023 Deleted Chat Logs
             </h1>
-            <div className="flex flex-col gap-4 p-4">
+            <div className="flex flex-col gap-4 p-4 max-w-6xl mx-auto">
                 {messages.map((message, index) => {
                     return (
                         <div
