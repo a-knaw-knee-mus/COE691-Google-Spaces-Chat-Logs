@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import data from "./assets/messages.json";
 import { Icon } from "@iconify/react";
 
@@ -40,48 +40,74 @@ function App() {
                                 {message?.message_state &&
                                     "message deleted by creator"}
                             </p>
-                            <div className="mt-1 flex flex-wrap gap-2">
-                                {message.reactions?.map((reaction, index) => {
-                                    return (
-                                        <div className="max-w-auto group">
-                                            <div
-                                                key={index}
-                                                className="inline-flex items-center py-1 px-2 text-s text-center text-white bg-gray-300 rounded-lg focus:ring-4 focus:outline-none  dark:bg-slate-600 dark:focus:ring-slate-800"
-                                            >
-                                                {reaction.emoji.unicode}
-                                                <span className="inline-flex items-center justify-center w-4 h-4 ml-2 text-xs font-semibold text-blue-800 bg-gray-200 dark:bg-blue-200 rounded-full">
-                                                    {
-                                                        reaction.reactor_emails
-                                                            .length
-                                                    }
-                                                </span>
-                                            </div>
-                                            <div className="absolute opacity-0 group-hover:opacity-100 transition-all bg-slate-600 rounded-md p-2 mt-2">
-                                                {reaction.reactor_emails.map(
-                                                    (email, index) => {
-                                                        return (
-                                                            <p
-                                                                key={index}
-                                                                className="text-xs text-white"
-                                                            >
-                                                                {email}
-                                                            </p>
-                                                        );
-                                                    }
-                                                )}
-                                            </div>
-                                        </div>
-                                    );
-                                })}
-                            </div>
+                            {message.attached_files !== undefined && (
+                                <div className="mt-2">
+                                    {message.attached_files.map(
+                                        (file, index) => {
+                                            return (
+                                                <a
+                                                    key={index}
+                                                    target="_blank"
+                                                    href={`/images/${file.export_name}`}
+                                                >
+                                                    <span className="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">
+                                                        Attachment
+                                                    </span>
+                                                </a>
+                                            );
+                                        }
+                                    )}
+                                </div>
+                            )}
+                            {message.reactions !== undefined && (
+                                <div className="mt-2 flex flex-wrap gap-2">
+                                    {message.reactions?.map(
+                                        (reaction, index) => {
+                                            return (
+                                                <div
+                                                    key={index}
+                                                    className="max-w-auto group"
+                                                >
+                                                    <div
+                                                        key={index}
+                                                        className="inline-flex items-center py-1 px-2 text-s text-center text-white bg-gray-300 rounded-lg focus:ring-4 focus:outline-none  dark:bg-slate-600 dark:focus:ring-slate-800"
+                                                    >
+                                                        {reaction.emoji.unicode}
+                                                        <span className="inline-flex items-center justify-center w-4 h-4 ml-2 text-xs font-semibold text-blue-800 bg-gray-200 dark:bg-blue-200 rounded-full">
+                                                            {
+                                                                reaction
+                                                                    .reactor_emails
+                                                                    .length
+                                                            }
+                                                        </span>
+                                                    </div>
+                                                    <div className="absolute opacity-0 group-hover:opacity-100 transition-all bg-slate-600 rounded-md p-2 mt-2">
+                                                        {reaction.reactor_emails.map(
+                                                            (email, index) => {
+                                                                return (
+                                                                    <p
+                                                                        key={
+                                                                            index
+                                                                        }
+                                                                        className="text-xs text-white"
+                                                                    >
+                                                                        {email}
+                                                                    </p>
+                                                                );
+                                                            }
+                                                        )}
+                                                    </div>
+                                                </div>
+                                            );
+                                        }
+                                    )}
+                                </div>
+                            )}
                         </div>
                     );
                 })}
             </div>
-            <a
-                href="https://codebeautify.org/jsonviewer/y2318ef9e"
-                target="_blank"
-            >
+            <a href="/messages.json" target="_blank">
                 <Icon
                     className="mx-auto pb-2"
                     icon="material-symbols:frame-source"
